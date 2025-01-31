@@ -1,23 +1,32 @@
 <?php
 
 /**
-* Plugin Name:  Magic Gallery
-* Description:  Simple wordpress plugin for image gallery gutenberg blocks.
-* Version:      1.0
-* Author:       Maggie Perry
-* License:      GPL2 or later
-* License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-* Text Domain:  magicgallery
-*/
+ * Plugin Name:       Magic Gallery
+ * Description:       Simple gutenberg image gallery block.
+ * Version:           0.1.0
+ * Requires at least: 6.5
+ * Requires PHP:      7.4
+ * Author:            Maggie Perry
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       magic-gallery
+ *
+ * @package           create-block
+ */
 
-function magic_test($content)
-{
-    // Message you want to display after the post
-    // Add URLs to your own Twitter and Facebook profiles
-
-        $content .= 'This is a magic gallery';
-    // Return the content
-    return $content;
+if (! defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
 }
-// Hook our function to WordPress the_content filter
-add_filter('the_content', 'magic_test');
+
+/**
+ * Registers the block using the metadata loaded from the `block.json` file.
+ * Behind the scenes, it registers also all assets so they can be enqueued
+ * through the block editor in the corresponding context.
+ *
+ * @see https://developer.wordpress.org/reference/functions/register_block_type/
+ */
+function create_block_magic_gallery_init()
+{
+    register_block_type(__DIR__ . '/build');
+}
+add_action('init', 'create_block_magic_gallery_init');
