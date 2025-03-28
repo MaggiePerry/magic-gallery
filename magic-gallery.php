@@ -4,7 +4,7 @@
  * Plugin Name:       Magic Gallery
  * Description:       Simple gutenberg image gallery block.
  * Version:           0.1.0
- * Requires at least: 6.5
+ * Requires at least: 6.7
  * Requires PHP:      7.4
  * Author:            Maggie Perry
  * License:           GPL-2.0-or-later
